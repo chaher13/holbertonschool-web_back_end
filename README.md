@@ -1,2 +1,1 @@
-Python - Variable Annotations
-
+README at the root
