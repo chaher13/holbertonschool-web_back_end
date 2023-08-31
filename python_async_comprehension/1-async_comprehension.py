@@ -23,7 +23,7 @@ async def async_generator() -> Generator[float, None, None]:
     for result in results:
         yield result
 
+
 async def async_comprehension() -> List[float]:
     result = [x async for x in async_generator()]
     return result
-
