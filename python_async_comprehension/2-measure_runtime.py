@@ -19,12 +19,21 @@ async def async_generator() -> Generator[float, None, None]:
         await asyncio.sleep(1)
         yield random.uniform(0, 10)
 
+
 async def async_comprehension() -> List[float]:
     result = [x async for x in async_generator()]
     return result
 
 
 async def measure_runtime() -> float:
+    """
+    Measures the total runtime of four instances of the async_comprehension
+    function executed concurrently using asyncio.gather().
+
+    Returns:
+    float: The total runtime of executing four instances
+    of the async_comprehension function concurrently.
+    """
     began = asyncio.get_event_loop().time()
     await asyncio.gather(async_comprehension(),
                          async_comprehension(),

@@ -12,6 +12,13 @@ from typing import Generator
 
 
 async def async_generator() -> Generator[float, None, None]:
+    """
+    An asynchronous generator that yields random floating-point numbers.
+
+    Returns:
+        Generator[float, None, None]: A generator
+        that yields random floating-point numbers.
+    """
     async def async_random() -> float:
         await asyncio.sleep(1)
         return random.uniform(0, 10)
