@@ -15,15 +15,9 @@ from typing import Generator, List
 
 
 async def async_generator() -> Generator[float, None, None]:
-    async def async_random() -> float:
+    for _ in range(10):
         await asyncio.sleep(1)
-        return random.uniform(0, 10)
-
-    tasks = [async_random() for _ in range(10)]
-    results = await asyncio.gather(*tasks)
-    for result in results:
-        yield result
-
+        yield random.uniform(0, 10)
 
 async def async_comprehension() -> List[float]:
     result = [x async for x in async_generator()]
@@ -37,5 +31,5 @@ async def measure_runtime() -> float:
                          async_comprehension(),
                          async_comprehension())
     finish = asyncio.get_event_loop().time()
-    result = finish - began
-    return result
+    total = finish - began
+    return total
