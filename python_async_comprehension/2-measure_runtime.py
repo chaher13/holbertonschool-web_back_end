@@ -15,12 +15,49 @@ from typing import Generator, List
 
 
 async def async_generator() -> Generator[float, None, None]:
+    """
+    An asynchronous generator that yields random floating-point numbers
+    between 0 and 10.
+
+    Yields:
+        float: A random floating-point number between 0 and 10.
+
+    Example Usage:
+        async def example_usage():
+            async for number in async_generator():
+                print(number)
+
+        asyncio.run(example_usage())
+
+    Code Analysis:
+        Inputs:
+            None
+
+        Flow:
+            1. The function starts a loop that will iterate 10 times.
+            2. Inside the loop, it awaits a 1-second delay
+            using `asyncio.sleep`.
+            3. After the delay, it yields a random floating-point number
+            between 0 and 10 using `random.uniform`.
+            4. The loop repeats until it has iterated 10 times.
+
+        Outputs:
+            A sequence of 10 random floating-point numbers between 0 and 10.
+    """
     for _ in range(10):
         await asyncio.sleep(1)
         yield random.uniform(0, 10)
 
 
 async def async_comprehension() -> List[float]:
+    """
+    Generate a list of random floating-point numbers between 0 and 10
+    using an asynchronous generator.
+
+    Returns:
+        List[float]: A list of 10 random floating-point numbers
+        between 0 and 10.
+    """
     result = [x async for x in async_generator()]
     return result
 

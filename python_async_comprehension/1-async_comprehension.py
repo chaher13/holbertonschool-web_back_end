@@ -34,15 +34,6 @@ async def async_generator() -> Generator[float, None, None]:
     """
 
     async def async_random() -> float:
-        """
-        An inner function that generates a random floating-point number after a 1-second delay.
-
-        Inputs:
-        - None
-
-        Outputs:
-        - A random floating-point number.
-        """
         await asyncio.sleep(1)
         return random.uniform(0, 10)
 
