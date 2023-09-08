@@ -16,6 +16,34 @@ import csv
 from typing import List
 
 
+def index_range(page, page_size):
+    """
+    Returns a tuple containing the start and end indexes
+    for a given pagination range.
+
+    Args:
+        page (int): The page number for which
+        the index range is to be calculated.
+        page_size (int): The number of items per page.
+
+    Returns:
+        tuple: A tuple containing the start and end indexes
+        for the given pagination parameters.
+        If either `page` or `page_size` is less than 1, returns None.
+
+    Example:
+        start_index, end_index = index_range(2, 10)
+        print(start_index)  # Output: 10
+        print(end_index)  # Output: 20
+    """
+    if page < 1 or page_size < 1:
+        return None
+    start_index = (page - 1) * page_size
+    end_index = start_index + page_size
+
+    return (start_index, end_index)
+
+
 class Server:
     """
     A class that manages a dataset stored in a CSV file
