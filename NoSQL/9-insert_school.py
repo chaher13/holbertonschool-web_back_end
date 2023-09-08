@@ -10,6 +10,16 @@ Returns the new _id
 
 
 def insert_school(mongo_collection, **kwargs):
+    """
+    Insert a new document into a MongoDB collection.
+
+    Args:
+        mongo_collection (MongoDB collection object): The MongoDB collection where the document will be inserted.
+        **kwargs (keyword arguments): The keyword arguments used to create the new document.
+
+    Returns:
+        string: The ID of the inserted document.
+    """
 
     new_document = kwargs
     result = mongo_collection.insert_one(new_document)

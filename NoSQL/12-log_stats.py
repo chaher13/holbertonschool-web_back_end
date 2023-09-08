@@ -16,24 +16,25 @@ path=/status
 """
 import pymongo
 
+if __name__ == "__main__":
+    
+    mongo_client = pymongo.MongoClient("mongodb://localhost:27017/")
+    db = mongo_client["logs"]
+    collection = db["nginx"]
 
-mongo_client = pymongo.MongoClient("mongodb://localhost:27017/")
-db = mongo_client["logs"]
-collection = db["nginx"]
+    total_logs = collection.count_documents({})
 
-total_logs = collection.count_documents({})
+    methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    method_counts = {method: collection.count_documents({"method": method})
+                    for method in methods}
 
-methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
-method_counts = {method: collection.count_documents({"method": method})
-                 for method in methods}
+    status_check_count = collection.count_documents({"method": "GET",
+                                                    "path": "/status"})
 
-status_check_count = collection.count_documents({"method": "GET",
-                                                 "path": "/status"})
+    print(f"{total_logs} logs")
+    print("Methods:")
+    for method in methods:
+        print(f"\tmethod {method}: {method_counts[method]}")
+    print(f"{status_check_count} status check")
 
-print(f"{total_logs} logs")
-print("Methods:")
-for method in methods:
-    print(f"\tmethod {method}: {method_counts[method]}")
-print(f"{status_check_count} status check")
-
-mongo_client.close()
+    mongo_client.close()
