@@ -28,7 +28,34 @@ the user should still receive rows indexed 10 to 19 included.
 import csv
 import math
 from typing import List
-index_range = __import__('1-simple_pagination').index_range
+
+
+def index_range(page, page_size):
+    """
+    Returns a tuple containing the start and end indexes
+    for a given pagination range.
+
+    Args:
+        page (int): The page number for which
+        the index range is to be calculated.
+        page_size (int): The number of items per page.
+
+    Returns:
+        tuple: A tuple containing the start and end indexes
+        for the given pagination parameters.
+        If either `page` or `page_size` is less than 1, returns None.
+
+    Example:
+        start_index, end_index = index_range(2, 10)
+        print(start_index)  # Output: 10
+        print(end_index)  # Output: 20
+    """
+    if page < 1 or page_size < 1:
+        return None
+    start_index = (page - 1) * page_size
+    end_index = start_index + page_size
+
+    return (start_index, end_index)
 
 
 class Server:
@@ -51,6 +78,35 @@ class Server:
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
+        """
+        Initializes the Server class.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Summary:
+            The __init__ method initializes the Server class
+            by setting the __dataset attribute to None.
+
+        Example Usage:
+            server = Server()
+
+        Code Analysis:
+            Inputs:
+                - None
+
+            Flow:
+                1. The __init__ method is called
+                when a new instance of the Server class is created.
+                2. It sets the __dataset attribute to None,
+                indicating that the dataset has not been loaded yet.
+
+            Outputs:
+                - None
+        """
         self.__dataset = None
 
     def dataset(self) -> List[List]:
