@@ -16,8 +16,9 @@ path=/status
 """
 import pymongo
 
+
 if __name__ == "__main__":
-    
+
     mongo_client = pymongo.MongoClient("mongodb://localhost:27017/")
     db = mongo_client["logs"]
     collection = db["nginx"]
