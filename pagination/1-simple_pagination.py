@@ -18,7 +18,8 @@ from typing import List
 
 class Server:
     """
-    A class that manages a dataset stored in a CSV file and provides methods to retrieve specific pages of data.
+    A class that manages a dataset stored in a CSV file
+    and provides methods to retrieve specific pages of data.
 
     Attributes:
         DATA_FILE (str): The path to the CSV file containing the dataset.
@@ -26,8 +27,10 @@ class Server:
 
     Methods:
         __init__: Initializes the Server class and sets the dataset to None.
-        dataset: Retrieves the dataset from the CSV file and caches it for future use.
-        get_page: Retrieves the specified page of data from the dataset based on the given page number and page size.
+        dataset: Retrieves the dataset from the CSV file
+        and caches it for future use.
+        get_page: Retrieves the specified page of data from the dataset based
+        on the given page number and page size.
     """
 
     DATA_FILE = "Popular_Baby_Names.csv"
@@ -64,7 +67,8 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Retrieves the specified page of data from the dataset based on the given page number and page size.
+        Retrieves the specified page of data from the dataset
+        based on the given page number and page size.
 
         Args:
             page (int): The page number to retrieve (default is 1).

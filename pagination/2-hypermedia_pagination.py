@@ -33,15 +33,19 @@ index_range = __import__('1-simple_pagination').index_range
 
 class Server:
     """
-    A class that manages a dataset and provides methods for retrieving data in a paginated manner.
+    A class that manages a dataset and provides methods
+    for retrieving data in a paginated manner.
 
     Attributes:
         DATA_FILE (str): The filename of the CSV file containing the dataset.
 
     Methods:
         dataset() -> List[List]: Returns the dataset stored in the class.
-        get_page(page: int = 1, page_size: int = 10) -> List[List]: Retrieves a specific page of data from the dataset.
-        get_hyper(page: int = 1, page_size: int = 10) -> dict: Returns information about the requested page and hyperlinks for pagination.
+        get_page(page: int = 1, page_size: int = 10) -> List[List]:
+        Retrieves a specific page of data from the dataset.
+        get_hyper(page: int = 1, page_size: int = 10) -> dict:
+        Returns information about the requested page
+        and hyperlinks for pagination.
     """
 
     DATA_FILE = "Popular_Baby_Names.csv"
@@ -51,7 +55,9 @@ class Server:
 
     def dataset(self) -> List[List]:
         """
-        Returns the dataset stored in the class. If the dataset is not yet loaded, it reads the data from the CSV file and stores it.
+        Returns the dataset stored in the class.
+        If the dataset is not yet loaded, it reads the data
+        from the CSV file and stores it.
 
         Returns:
             List[List]: The dataset.
@@ -66,7 +72,8 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Retrieves a specific page of data from the dataset based on the given page number and page size.
+        Retrieves a specific page of data from the dataset
+        based on the given page number and page size.
 
         Args:
             page (int): The page number to retrieve (default is 1).
@@ -92,14 +99,16 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """
-        Returns a dictionary containing information about the requested page and hyperlinks for pagination.
+        Returns a dictionary containing information
+        about the requested page and hyperlinks for pagination.
 
         Args:
             page (int): The page number to retrieve (default is 1).
             page_size (int): The number of rows per page (default is 10).
 
         Returns:
-            dict: A dictionary containing information about the requested page and hyperlinks for pagination.
+            dict: A dictionary containing information about the
+              requested page and hyperlinks for pagination.
         """
         page_data = self.get_page(page, page_size)
         total_pages = math.ceil(len(self.dataset()) / page_size)

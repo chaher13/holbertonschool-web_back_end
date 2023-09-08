@@ -4,14 +4,16 @@ from typing import List, Dict
 
 class Server:
     """
-    The `Server` class represents a server that provides access to a dataset of popular baby names.
+    The `Server` class represents a server that provides access
+    to a dataset of popular baby names.
 
     Attributes:
-        DATA_FILE (str): The filename of the CSV file containing the popular baby names dataset.
+        DATA_FILE (str): The filename of the CSV file
+        containing the popular baby names dataset.
         __dataset (List[List]): The dataset of popular baby names.
-        __indexed_dataset (Dict[int, List]): The indexed dataset of popular baby names.
+        __indexed_dataset (Dict[int, List]):
+        The indexed dataset of popular baby names.
     """
-
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
@@ -53,14 +55,17 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """
-        Retrieves a subset of the indexed dataset based on the given index and page size.
+        Retrieves a subset of the indexed dataset based on the given index
+        and page size.
 
         Args:
-            index (int, optional): The starting index of the subset. Defaults to None.
+            index (int, optional): The starting index of the subset.
+            Defaults to None.
             page_size (int, optional): The size of the subset. Defaults to 10.
 
         Returns:
-            Dict: A dictionary containing the subset of data along with the index, next index, and page size.
+            Dict: A dictionary containing the subset of data along
+            with the index, next index, and page size.
         """
         assert isinstance(index, int) and index >= 0
         assert isinstance(page_size, int) and page_size > 0

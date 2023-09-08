@@ -13,15 +13,18 @@ Page numbers are 1-indexed, i.e. the first page is page 1.
 
 def index_range(page, page_size):
     """
-    Returns a tuple containing the start and end indexes for a given pagination range.
+    Returns a tuple containing the start and end indexes
+    for a given pagination range.
 
     Args:
-        page (int): The page number for which the index range is to be calculated.
+        page (int): The page number for which
+        the index range is to be calculated.
         page_size (int): The number of items per page.
 
     Returns:
-        tuple: A tuple containing the start and end indexes for the given pagination parameters.
-               If either `page` or `page_size` is less than 1, returns None.
+        tuple: A tuple containing the start and end indexes
+        for the given pagination parameters.
+        If either `page` or `page_size` is less than 1, returns None.
 
     Example:
         start_index, end_index = index_range(2, 10)
