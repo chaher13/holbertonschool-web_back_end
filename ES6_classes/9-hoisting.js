@@ -11,8 +11,10 @@ export class HolbertonClass {
   set year(year) {
     if (typeof year === 'number') {
       this._year = year;
+    } else {
+      throw new TypeError('year must be a number');
     }
-    throw new TypeError('year must be a number');
+
   }
 
   get location() {
@@ -22,8 +24,10 @@ export class HolbertonClass {
   set location(location) {
     if (typeof location === 'string') {
       this._location = location;
+    } else {
+      throw new TypeError('location must be a string');
     }
-    throw new TypeError('location must be a string');
+
   }
 }
 

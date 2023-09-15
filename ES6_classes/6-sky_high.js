@@ -13,8 +13,10 @@ export default class SkyHighBuilding extends Building {
   set floors(floors) {
     if (typeof floors === 'number') {
       this._floors = floors;
+    } else {
+      throw new TypeError('floors must be a number');
     }
-    throw new TypeError('floors must be a number');
+
   }
 
   evacuationWarningMessage() {
